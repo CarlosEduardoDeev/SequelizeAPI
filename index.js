@@ -5,7 +5,9 @@ app.use(express.json())
 
 
 
-require('./Routes/Extintor')(app)
+require('./Routes/RotasExtintor/Extintor')(app)
+require('./Routes/RotasUsuario/Usuario')(app)
+require('./Routes/RotaLogin/LoginUser')(app)
 
 
 

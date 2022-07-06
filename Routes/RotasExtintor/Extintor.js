@@ -1,25 +1,27 @@
 const router = require('express').Router()
-const database = require('../DB/Db')
-const Extintor = require('../Models/AddExtintor')
+const database = require('../../DB/Db')
+const Extintor = require('../../Models/Extintor/AddExtintor')
 
 
 
 //Rota de ADD extintor
 router.post('/add', async (req,res) =>{
 
-    const {numeracao,peso,local} = req.body
+    const {numeracao,peso,local,tipo} = req.body
 
 if(!numeracao){return res.status(422).json({msg:"Digite a numeração "})}
 if(!peso){return res.status(422).json({msg:"Digite seu peso "})}
 if(!local){return res.status(422).json({msg:"Digite o local que se encontra ! "})}
+if(!tipo){return res.status(422).json({msg:"Digite o tipo"})}
 
 try {
     await database.sync();
     
     const novoProduto = Extintor.create({
-        numeracao:numeracao,
-        peso:peso,
-        local:local
+        numeracao,
+        peso,
+        local,
+        tipo
     })
 
     res.status(200).json({msg:'Exintor inserido !'})

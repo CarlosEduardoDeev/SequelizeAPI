@@ -1,12 +1,18 @@
 const Sequelize = require('sequelize')
-const database = require('../DB/Db')
+const database = require('../../DB/Db')
 
-const Extintor = database.define('extintor',{
+const LogsExtintor = database.define('LogsExtintor',{
     id:{
         type: Sequelize.INTEGER,
         autoIncrement:true,
         allowNull:false,
         primaryKey:true
+    },
+    usuario:{
+        type: Sequelize.STRING,
+        allowNull:false,
+        references:{model:'usuarios', key:'usuario'},
+        
     },
     numeracao:{
         type: Sequelize.STRING,
@@ -22,4 +28,4 @@ const Extintor = database.define('extintor',{
     }
 })
 
-module.exports = Extintor;
+module.exports = LogsExtintor;

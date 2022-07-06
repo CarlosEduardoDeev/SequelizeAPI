@@ -5,6 +5,7 @@ const dbuser = process.env.DB_USER
 const dbpass = process.env.DB_PASS
 
 const sequelize = new Sequelize('UAGA_SAFETY','Matrix','@keanu#uaga21', {
+    logging:false,
     dialect:'mssql',
     host:'CANADA',
     port:1433
